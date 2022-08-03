@@ -1,6 +1,6 @@
 {
     "name": "@codeperate/foal-s3-disk-v3",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "description": "AWS S3 V3 storage components for FoalTS",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
