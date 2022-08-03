@@ -5,6 +5,7 @@
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "scripts": {
+        "test": "echo 'test'",
         "build": "del-cli dist && tsc -p tsconfig.build.json",
         "release": "pnpm run build && npx np --no-cleanup --no-release-draft"
     },
