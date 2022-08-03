@@ -1,0 +1,59 @@
+{
+    "name": "@codeperate/foal-s3-disk-v3",
+    "version": "0.0.1",
+    "description": "AWS S3 V3 storage components for FoalTS",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "scripts": {
+        "build": "del-cli dist && tsc -p tsconfig.build.json",
+        "release": "pnpm run build && npx np --no-cleanup --no-release-draft"
+    },
+    "funding": {
+        "url": "https://github.com/sponsors/LoicPoullain"
+    },
+    "engines": {
+        "node": ">=10"
+    },
+    "keywords": [
+        "FoalTS",
+        "foal",
+        "disk",
+        "storage",
+        "fs",
+        "aws",
+        "s3"
+    ],
+    "bugs": {
+        "url": "https://github.com/FoalTS/foal/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/FoalTS/foal"
+    },
+    "homepage": "https://github.com/FoalTS",
+    "contributors": [
+        "Loïc Poullain <loic.poullain@centraliens.net>"
+    ],
+    "license": "MIT",
+    "files": [
+        "dist/"
+    ],
+    "dependencies": {
+        "@aws-sdk/client-s3": "^3.142.0",
+        "@foal/core": "^2.9.0",
+        "@foal/storage": "^2.9.0"
+    },
+    "devDependencies": {
+        "@jest/types": "^28.1.1",
+        "@types/jest": "^28.1.4",
+        "@types/node": "10.17.24",
+        "del-cli": "^5.0.0",
+        "jest": "^28.1.2",
+        "ts-jest": "^28.0.5",
+        "ts-node": "^10.8.2",
+        "typescript": "^4.7.4"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}

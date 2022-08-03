@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "target": "esNext",
+        "module": "commonjs",
+        "lib": ["es2017"],
+        "types": ["jest"],
+        "declaration": true,
+        "declarationDir": "dist",
+
+        "rootDir": "src",
+        "outDir": "dist",
+        "strict": false,
+        "noUnusedLocals": true,
+        "noUnusedParameters": false,
+        "noImplicitReturns": false,
+        "strictNullChecks": false,
+        "noImplicitAny": false,
+        "noFallthroughCasesInSwitch": true,
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["dist", "types"]
+}
