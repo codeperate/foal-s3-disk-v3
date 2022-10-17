@@ -14,7 +14,7 @@ import { Disk, FileDoesNotExist } from '@foal/storage';
  */
 export class S3Disk extends Disk {
     private s3: S3Client;
-    async write(dirname: string, content: Buffer | NodeJS.ReadableStream, options: { name?: string } | { extension?: string } = {}): Promise<{ path: string }> {
+    async write(dirname: string, content: Buffer | NodeJS.ReadableStream, options: { name?: string; extension?: string; mimeType?: string } = {}): Promise<{ path: string }> {
         let name = this.hasName(options) ? options.name : await generateToken();
 
         if (this.hasExtension(options)) {
@@ -28,7 +28,7 @@ export class S3Disk extends Disk {
                 Body: content,
                 Bucket: this.getBucket(),
                 Key: path,
-                ContentType: this.getContentType(ext),
+                ContentType: options.mimeType ?? this.getContentType(ext),
                 ServerSideEncryption: Config.get('settings.disk.s3.serverSideEncryption', 'string'),
             }),
         );
