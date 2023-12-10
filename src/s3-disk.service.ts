@@ -1,7 +1,7 @@
 import { Readable } from 'stream';
 
 // 3p
-import { DeleteObjectCommand, GetObjectCommand, HeadObjectCommand, PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
+import { DeleteObjectCommand, GetObjectCommand, HeadObjectCommand, PutObjectCommand, S3Client, ServerSideEncryption } from '@aws-sdk/client-s3';
 import { Config, generateToken } from '@foal/core';
 import { Disk, FileDoesNotExist } from '@foal/storage';
 
@@ -14,7 +14,7 @@ import { Disk, FileDoesNotExist } from '@foal/storage';
  */
 export class S3Disk extends Disk {
     private s3: S3Client;
-    async write(dirname: string, content: Buffer | NodeJS.ReadableStream, options: { name?: string; extension?: string; mimeType?: string } = {}): Promise<{ path: string }> {
+    async write(dirname: string, content: Buffer, options: { name?: string; extension?: string; mimeType?: string } = {}): Promise<{ path: string }> {
         let name = this.hasName(options) ? options.name : await generateToken();
 
         if (this.hasExtension(options)) {
@@ -29,7 +29,7 @@ export class S3Disk extends Disk {
                 Bucket: this.getBucket(),
                 Key: path,
                 ContentType: options.mimeType ?? this.getContentType(ext),
-                ServerSideEncryption: Config.get('settings.disk.s3.serverSideEncryption', 'string'),
+                ServerSideEncryption: Config.get('settings.disk.s3.serverSideEncryption', 'string') as ServerSideEncryption,
             }),
         );
         return { path };
